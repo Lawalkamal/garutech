@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Automotive E-commerce Design System */
+@layer base {
+  :root {
+    /* Automotive Dark Theme */
+    --background: 220 13% 8%;
+    --foreground: 210 30% 95%;
+    --black: 217 100% 0%;
+    --white: 136 0% 100%;
+    --yell: 51°, 98%, 99%;
+
+
+    --card: 220 13% 10%;
+    --card-foreground: 210 30% 95%;
+
+    --popover: 220 13% 12%;
+    --popover-foreground: 210 30% 95%;
+
+    /* Racing Red Primary */
+    --primary: 0 84% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Metallic Secondary */
+    --secondary: 220 13% 16%;
+    --secondary-foreground: 210 30% 85%;
+
+    --muted: 220 13% 14%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Blue Accent */
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 20%;
+    --input: 220 13% 16%;
+    --ring: 0 84% 60%;
+
+    --radius: 0.75rem;
+
+    /* Automotive Specific Colors */
+    --automotive-dark: 220 13% 6%;
+    --automotive-darker: 220 13% 4%;
+    --metallic: 220 10% 25%;
+    --metallic-light: 220 15% 35%;
+    --racing-red: 0 84% 60%;
+    --electric-blue: 217 91% 60%;
+    --chrome: 0 0% 75%;
+    --oil-black: 220 13% 8%;
+
+    /* Gradients */
+    --gradient-metallic: linear-gradient(135deg, hsl(220 10% 25%) 0%, hsl(220 15% 35%) 50%, hsl(220 10% 25%) 100%);
+    --gradient-racing: linear-gradient(135deg, hsl(0 84% 60%) 0%, hsl(0 70% 45%) 100%);
+    --gradient-electric: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(217 80% 45%) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(220 13% 8%) 0%, hsl(220 13% 12%) 100%);
+
+    /* Shadows */
+    --shadow-automotive: 0 10px 30px -10px hsl(220 13% 4% / 0.5);
+    --shadow-glow-red: 0 0 30px hsl(0 84% 60% / 0.3);
+    --shadow-glow-blue: 0 0 30px hsl(217 91% 60% / 0.3);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease-out;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    background: hsl(var(--automotive-dark));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    @apply font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl lg:text-6xl font-bold;
+  }
+
+  h2 {
+    @apply text-3xl lg:text-4xl font-bold;
+  }
+
+  h3 {
+    @apply text-2xl lg:text-3xl font-semibold;
+  }
+}
+
+@layer components {
+  /* Automotive Button Variants */
+  .btn-racing {
+    @apply bg-primary hover:bg-primary/90 text-primary-foreground;
+    background: var(--gradient-racing);
+    box-shadow: var(--shadow-glow-red);
+    transition: var(--transition-smooth);
+  }
+
+  .btn-racing:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow-red), 0 8px 25px -8px hsl(0 84% 60% / 0.4);
+  }
+
+  .btn-electric {
+    @apply bg-accent hover:bg-accent/90 text-accent-foreground;
+    background: var(--gradient-electric);
+    box-shadow: var(--shadow-glow-blue);
+    transition: var(--transition-smooth);
+  }
+
+  .btn-electric:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow-blue), 0 8px 25px -8px hsl(217 91% 60% / 0.4);
+  }
+
+  .btn-metallic {
+    @apply bg-secondary hover:bg-secondary/90 text-secondary-foreground border border-metallic;
+    background: var(--gradient-metallic);
+    transition: var(--transition-smooth);
+  }
+
+  .btn-metallic:hover {
+    transform: translateY(-1px);
+    background: hsl(var(--metallic-light));
+  }
+
+  /* Card Variants */
+  .card-automotive {
+    @apply bg-card border border-border rounded-lg;
+    background: var(--gradient-dark);
+    box-shadow: var(--shadow-automotive);
+    transition: var(--transition-smooth);
+  }
+
+  .card-automotive:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-automotive), 0 20px 40px -12px hsl(220 13% 4% / 0.3);
+  }
+
+  .product-card {
+    @apply card-automotive p-6 cursor-pointer;
+  }
+
+  .product-card:hover {
+    border-color: hsl(var(--racing-red));
+  }
+
+  /* Hero Section */  
+  .hero-section {
+    background: linear-gradient(135deg, hsl(var(--automotive-darker)) 0%, hsl(var(--automotive-dark)) 50%, hsl(var(--oil-black)) 100%);
+    background-attachment: fixed;
+  }
+
+  /* Metallic Text Effect */
+  .text-metallic {
+    background: var(--gradient-metallic);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Glow Effects */
+  .glow-red {
+    box-shadow: 0 0 20px hsl(var(--racing-red) / 0.3);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px hsl(var(--electric-blue) / 0.3);
+  }
+
+  /* Navigation */
+  .nav-automotive {
+    @apply bg-card/95 backdrop-blur-sm border-b border-border;
+    background: hsl(var(--automotive-dark) / 0.95);
+  }
+
+  /* Loading Animation */
+  .pulse-automotive {
+    animation: pulse-automotive 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-automotive {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  /* Hover Effects */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  .hover-glow-red:hover {
+    box-shadow: var(--shadow-glow-red);
+  }
+
+  .hover-glow-blue:hover {
+    box-shadow: var(--shadow-glow-blue);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
